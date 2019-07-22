@@ -84,6 +84,21 @@ resource "aws_subnet" "mw_tw_subnet_db" {
   }
 }
 
+resource "aws_subnet" "mw_tw_subnet_elb" {
+  vpc_id                  = "${aws_vpc.mw_tw_vpc.id}"
+  cidr_block              = "${var.cidrs["elb"]}"
+  #map_public_ip_on_launch = false
+  availability_zone       = "${data.aws_availability_zones.available.names[0]}"
+
+  tags {
+    Name = "mw_tw_subnet_db"
+  }
+}
+
+resource "aws_route_table_association" "mw_tw_elb_assoc" {
+  subnet_id      = "${aws_subnet.mw_tw_subnet_elb.id}"
+  route_table_id = "${aws_route_table.mw_tw_public_rt.id}"
+}
 
 
 #security groups
