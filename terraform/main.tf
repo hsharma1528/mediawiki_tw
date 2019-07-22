@@ -100,6 +100,19 @@ resource "aws_route_table_association" "mw_tw_elb_assoc" {
   route_table_id = "${aws_route_table.mw_tw_public_rt.id}"
 }
 
+resource "aws_route_table_association" "mw_tw_web1_assoc" {
+  subnet_id      = "${aws_subnet.mw_tw_subnet_web1.id}"
+  route_table_id = "${aws_route_table.mw_tw_public_rt.id}"
+}
+
+resource "aws_route_table_association" "mw_tw_web2_assoc" {
+  subnet_id      = "${aws_subnet.mw_tw_subnet_web2.id}"
+  route_table_id = "${aws_route_table.mw_tw_public_rt.id}"
+}
+resource "aws_route_table_association" "mw_tw_db_assoc" {
+  subnet_id      = "${aws_subnet.mw_tw_subnet_db.id}"
+  route_table_id = "${aws_route_table.mw_tw_public_rt.id}"
+}
 
 #security groups
 
