@@ -8,7 +8,7 @@ cidrs       = {
 
 } 
  aws_instance_type = "t2.micro"
- aws_ami = "ami-0986c2ac7"
+ aws_ami = "ami-03291866"
  key_name = "ironman"
  elb_healthy_threshold = "2"
  elb_unhealthy_threshold = "2"
