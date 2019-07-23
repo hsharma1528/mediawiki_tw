@@ -76,7 +76,7 @@ resource "aws_subnet" "mw_tw_subnet_web2" {
 resource "aws_subnet" "mw_tw_subnet_db" {
   vpc_id                  = "${aws_vpc.mw_tw_vpc.id}"
   cidr_block              = "${var.cidrs["db"]}"
-  map_public_ip_on_launch = false
+  map_public_ip_on_launch = true
   availability_zone       = "${data.aws_availability_zones.available.names[0]}"
 
   tags {
@@ -87,7 +87,7 @@ resource "aws_subnet" "mw_tw_subnet_db" {
 resource "aws_subnet" "mw_tw_subnet_elb" {
   vpc_id                  = "${aws_vpc.mw_tw_vpc.id}"
   cidr_block              = "${var.cidrs["elb"]}"
-  #map_public_ip_on_launch = false
+  map_public_ip_on_launch = false
   availability_zone       = "${data.aws_availability_zones.available.names[0]}"
 
   tags {
